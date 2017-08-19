@@ -1,0 +1,38 @@
+import random
+
+oyuncular = ["oyuncu1","oyuncu2","oyuncu3","oyuncu4"]
+oyuncularsozluk = {}
+
+depo = [[],[],[],[]]
+
+kartlarYedek = []
+kartlar = ["Maça As","Maça ikili","maça üçlü","maça dörtlü","maça beşli","maça altılı","maça yedili","maça sekizli","maça dokuzlu","maça onlu","maça vale","maça kız","maça papaz","kupa as",
+           "kupa ikili","kupa üçlü","kupa dörtlü","kupa beşli","kupa altılı","kupa yedili","kupa sekizli","kupa dokuz","kupa onlu","kupa vale","kupa kız","Kupa Papaz","sinek as","sinek ikili","sinek üçlü",
+           "sinek dörtlü","sinek beşli","sinek altılı","sinek yedili","sinek sekizli","sinek dokuz","sinek on","sinek vale","Sinek Kız","sinek papaz","karo as","karo ikili","karo üçlü","karo dörtlü","karo beşli",
+           "karo altılı","karo yedili","karo sekizli","karo dokuzlu","karo onlu","karo vale","karo kız","karo papaz"]
+
+while True:
+    girilen = input("Kartlar dağıtılsın mı? E/H: ")
+
+    if girilen == "E":
+        for y in range(4):
+            for x in range(13):
+                ceklevel = random.choice(kartlar)
+                kartlar.remove(ceklevel)
+                depo[y].append(ceklevel)
+                oyuncularsozluk[oyuncular[y]] = depo[y]
+                kartlarYedek.append(ceklevel)
+
+
+    if girilen == "H":
+        print('Rövanş istemiyor musunuz ? :)')
+        break
+
+    for x,y in oyuncularsozluk.items():
+        print ("{} ---> {}".format(x,y))
+
+    kartlar = []
+    for x in kartlarYedek:
+        kartlar.append(x)
+    kartlarYedek = []
+    depo = [[], [], [], []]
